@@ -284,23 +284,3 @@ clearCompletedBtn.addEventListener('click', () => {
 
 // ===== Инициализация приложения =====
 renderTasks();
-loadTasksBtn.addEventListener('click', async () => {
-    console.log('1. Кнопка нажата');
-    
-    try {
-        const serverTasks = await fetchTasks();
-        console.log('2. Задачи получены:', serverTasks);
-        
-        console.log('3. Текущие задачи ДО:', getTasks());
-        
-        // ... остальной код ...
-        
-        console.log('4. Текущие задачи ПОСЛЕ:', getTasks());
-        console.log('5. Фильтр сейчас:', currentFilter);
-        
-        renderTasks();
-        console.log('6. Рендер выполнен');
-    } catch (err) {
-        console.error('ОШИБКА:', err);
-    }
-});
