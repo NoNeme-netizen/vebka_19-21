@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App | Асинхронность, Fetch, Storage</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .completed .task-text { text-decoration: line-through; opacity: 0.6; }
+        .filter-btn.active { background-color: #3b82f6; color: white; }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl p-6">
+        <!-- Header -->
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-check-circle text-blue-500"></i> Todo List
+        </h1>
+
+        <!-- Add Task Form -->
+        <form id="task-form" class="flex flex-col sm:flex-row gap-3 mb-6">
+            <input type="text" id="task-input" placeholder="Добавить задачу..." 
+                   class="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <select id="priority-select" class="border border-gray-300 rounded-lg px-4 py-2 bg-white">
+                <option value="low">Низкий</option>
+                <option value="medium" selected>Средний</option>
+                <option value="high">Высокий</option>
+            </select>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition flex items-center gap-2">
+                <i class="fa-solid fa-plus"></i> Добавить
+            </button>
+        </form>
+
+        <!-- Filters -->
+        <div id="filter-container" class="flex gap-2 mb-4">
+            <button class="filter-btn px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition" data-filter="all">Все</button>
+            <button class="filter-btn px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition" data-filter="active">Активные</button>
+            <button class="filter-btn px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition" data-filter="completed">Выполненные</button>
+        </div>
+
+        <!-- Task List -->
+        <ul id="task-list" class="space-y-3 mb-4"></ul>
+
+        <!-- Footer Buttons -->
+        <div class="flex flex-wrap justify-between items-center gap-2 border-t pt-4 text-sm text-gray-600">
+            <span id="task-stats">0 / 0 выполнено</span>
+            <div class="flex gap-2">
+                <button id="load-tasks-btn" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg transition flex items-center gap-1">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> Загрузить с сервера
+                </button>
+                <button id="clear-completed-btn" class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg transition flex items-center gap-1">
+                    <i class="fa-solid fa-trash"></i> Очистить выполн.
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Script (module) -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
